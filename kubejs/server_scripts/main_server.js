@@ -5,7 +5,6 @@ ServerEvents.recipes((event) => {
   replaceRecipes(event)
   recipeAdd(event)
   replaceTFCHeatingAndCasting(event)
-  createChanges(event)
 })
 
 LootJS.modifiers((event) => {
@@ -15,15 +14,15 @@ LootJS.modifiers((event) => {
   modifyAndRemoveEntityLoot(event)
 })
 
-ServerEvents.tags("worldgen/biome", event => {
+ServerEvents.tags("worldgen/biome", (event) => {
   addTFCBiomesToVanilla(event)
   addStargateBiomes(event)
 })
 
-ServerEvents.tags("item", event => {
+ServerEvents.tags("item", (event) => {
   addItemTags(event)
 })
-MoreJSEvents.structureLoad(event => {
+MoreJSEvents.structureLoad((event) => {
   replaceVanillaBlocks(event)
 })
 

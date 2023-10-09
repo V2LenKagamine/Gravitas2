@@ -21,7 +21,7 @@ const gtceuIngots = [
   "europium",
   "gallium",
   "gallium_arsenide",
-  //"graphene", no fluid
+  "graphene",
   "hsse",
   "hssg",
   "hsss",
@@ -58,7 +58,7 @@ const gtceuIngots = [
   "red_alloy",
   "rhodium",
   "rhodium_plated_palladium",
-  //"ruridit", no fluid
+  "ruridit",
   "ruthenium",
   "ruthenium_trinium_americium_neutronate",
   "samarium",
@@ -84,15 +84,21 @@ const gtceuIngots = [
   "vanadium_gallium",
   "vanadium_steel",
   "yttrium",
-  "yttrium_barium_cuprate",
+  "yttrium_barium_cuprate"
+
 ]
 
-let addItemTags = (/** @type {TagEvent.Item} */ event) => {
+
+let addItemTags = (/** @type {TagEvent.Item} */ event) =>{
   event.add("forge:ingots/iron", "tfc:metal/ingot/cast_iron")
   event.add("forge:rods/iron", "tfc:metal/rod/cast_iron")
   event.add("forge:plates/iron", "tfc:metal/sheet/cast_iron")
 
   gtceuIngots.forEach((ingot) => {
-    event.add("tfc:pileable_ingots", `gtceu:${ingot}_ingot`)
+  event.add("tfc:pileable_ingots", `gtceu:${ingot}_ingot`)
   })
+
+
+
+
 }

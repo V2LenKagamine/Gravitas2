@@ -5,6 +5,7 @@ ServerEvents.recipes((event) => {
   replaceRecipes(event)
   recipeAdd(event)
   replaceTFCHeatingAndCasting(event)
+  createChanges(event)
 })
 
 LootJS.modifiers((event) => {
@@ -17,24 +18,13 @@ LootJS.modifiers((event) => {
 ServerEvents.tags("worldgen/biome", event => {
   addTFCBiomesToVanilla(event)
   addStargateBiomes(event)
-  removeStrongholdFromOW(event)
 })
 
 ServerEvents.tags("item", event => {
   addItemTags(event)
 })
-
 MoreJSEvents.structureLoad(event => {
   replaceVanillaBlocks(event)
-})
-
-MoreJSEvents.structureAfterPlace((event) => {
-  replaceGoldBlocksWithPiles(event)
-  runErosionFeature(event)
-})
-
-ServerEvents.lowPriorityData(event => {
-  addGregTechIngotsToTFC(event)
 })
 
 NetworkEvents.dataReceived("customTask", (event) => {

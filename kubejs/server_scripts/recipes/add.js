@@ -59,5 +59,16 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     ingredients: [{ tag: "tfc:igneous_extrusive_rock" }, { tag: "forge:nuggets/zinc" }],
     results: [{ item: "create:andesite_alloy" }],
   })
+
+  event.custom({
+    type: "create:pressing",
+    ingredients: [{ item: "tfc:raw_iron_bloom" }],
+    results: [{ item: "tfc:refined_iron_bloom" }],
+  })
+  event.custom({
+    type: "create:pressing",
+    ingredients: [{ item: "tfc:refined_iron_bloom" }],
+    results: [{ item: "tfc:metal/ingot/wrought_iron" }],
+  })
   //Create End
 }

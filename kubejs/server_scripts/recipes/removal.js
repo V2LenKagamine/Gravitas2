@@ -19,6 +19,7 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "gtceu:shaped/stick_long_wrought_iron" })
   event.remove({ id: "gtceu:shaped/screw_wrought_iron" })
   event.remove({ id: "gtceu:shaped/wire_cutter_wrought_iron" })
+  event.remove({ id: "gtceu:shaped/iron_bucket" })
 
   //GT / Railcraft Tool Specific
   toolsToRemove.forEach((tool) => {
@@ -47,16 +48,24 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   //Railcraft
   event.remove({ id: /^railcraft:.*_gear/, mod: "railcraft" })
   event.remove({ id: /^railcraft:.*_shears/, mod: "railcraft" })
+  event.remove({ id: /^railcraft:rolling.*_plate/, mod: "railcraft" })
 
   //ATO
   event.remove({ id: /^alltheores:.*/, mod: "alltheores" })
 
   //Ad Astra
   event.remove({ id: /^ad_astra:hammering.*/, mod: "ad_astra" })
+  event.remove({ id: "ad_astra:recipes/steel_ingot_from_blasting_iron_ingot" })
 
   //Create
   event.remove({ id: "create:crafting/materials/andesite_alloy" })
   event.remove({ id: "create:crafting/materials/andesite_alloy_from_zinc" })
   event.remove({ id: "create:mixing/andesite_alloy" })
   event.remove({ id: "create:mixing/andesite_alloy_from_zinc" })
+
+  //Cast iron plate jank
+  event.remove({ id: "gtceu:shaped/plate_iron" })
+  event.remove({ id: "ad_astra:compressing/iron_plate_from_compressing_iron_ingot" })
+  event.remove({ id: "create:pressing/iron_ingot" })
+  event.remove({ id: "railcraft:rolling/iron_plate" })
 }

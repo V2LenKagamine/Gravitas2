@@ -89,5 +89,17 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     C: "minecraft:fire_charge",
     F: "tfc:crucible",
   })
+
+  event.shaped("framedblocks:framed_chest", ["FRF", "RCR", "FRF"], {
+    F: "framedblocks:framed_cube",
+    R: "#forge:rods/cast_iron",
+    C: "#forge:chests/wooden",
+  })
+
+  event.shaped("framedblocks:framed_secret_storage", ["RFR", "FCF", "RFR"], {
+    F: "framedblocks:framed_cube",
+    R: "#forge:rods/cast_iron",
+    C: "framedblocks:framed_chest",
+  })
   //Railcraft End
 }

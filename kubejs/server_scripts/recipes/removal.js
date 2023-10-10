@@ -11,9 +11,6 @@ const toolsToRemove = [
   "red_steel",
 ]
 let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
-  //TFC
-  event.remove({ id: "tfc:anvil/wrought_iron_rod" })
-
   //GT
   event.remove({ id: "gtceu:shaped/stick_wrought_iron" })
   event.remove({ id: "gtceu:shaped/stick_long_wrought_iron" })
@@ -75,4 +72,10 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "ad_astra:compressing/iron_plate_from_compressing_iron_ingot" })
   event.remove({ id: "create:pressing/iron_ingot" })
   event.remove({ id: "railcraft:rolling/iron_plate" })
+
+  //FramedBlocks
+  event.remove({ id: "framedblocks:framed_torch" })
+  event.remove({ id: "framedblocks:framed_soul_torch" })
+  event.remove({ id: "framedblocks:framed_chest" })
+  event.remove({ id: "framedblocks:framed_secret_storage" })
 }

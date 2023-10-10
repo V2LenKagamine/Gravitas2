@@ -21,6 +21,8 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "gtceu:shaped/wire_cutter_wrought_iron" })
   event.remove({ id: "gtceu:shaped/iron_bucket" })
 
+  event.remove({ id: "gtceu:shaped/bronze_primitive_blast_furnace" })
+
   //GT / Railcraft Tool Specific
   toolsToRemove.forEach((tool) => {
     event.remove({ output: `gtceu:${tool}_shovel`, mod: "gtceu" })
@@ -49,6 +51,10 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: /^railcraft:.*_gear/, mod: "railcraft" })
   event.remove({ id: /^railcraft:.*_shears/, mod: "railcraft" })
   event.remove({ id: /^railcraft:rolling.*_plate/, mod: "railcraft" })
+  event.remove({ id: /^railcraft:blast_furnace.*/, mod: "railcraft" })
+  event.remove({ id: "railcraft:blast_furnace_bricks" })
+  event.remove({ id: /^railcraft:coke_oven.*/, mod: "railcraft" })
+  event.remove({ id: "railcraft:coke_oven_bricks" })
 
   //ATO
   event.remove({ id: /^alltheores:.*/, mod: "alltheores" })

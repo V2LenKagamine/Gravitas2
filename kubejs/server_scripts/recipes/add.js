@@ -71,4 +71,15 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     results: [{ item: "tfc:metal/ingot/wrought_iron" }],
   })
   //Create End
+
+  //GTCEU Start
+  event.shaped("gtceu:primitive_blast_furnace", ["HRS", "PBR", "DRS"], {
+    H: "#forge:tools/hammers",
+    R: "#forge:rods/steel",
+    S: "#forge:screws/steel",
+    P: "#forge:sheets/steel",
+    B: "gtceu:firebricks",
+    D: "#forge:tools/screwdrivers",
+  })
+  //GTCEU End
 }

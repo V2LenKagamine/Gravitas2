@@ -55,6 +55,7 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "railcraft:blast_furnace_bricks" })
   event.remove({ id: /^railcraft:coke_oven.*/, mod: "railcraft" })
   event.remove({ id: "railcraft:coke_oven_bricks" })
+  event.remove({ id: "railcraft:solid_fueled_firebox" })
 
   //ATO
   event.remove({ id: /^alltheores:.*/, mod: "alltheores" })

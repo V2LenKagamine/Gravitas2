@@ -82,4 +82,12 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     D: "#forge:tools/screwdrivers",
   })
   //GTCEU End
+
+  //Railcraft Start
+  event.shaped("railcraft:solid_fueled_firebox", ["BBB", "BCB", "BFB"], {
+    B: "minecraft:brick",
+    C: "minecraft:fire_charge",
+    F: "tfc:crucible",
+  })
+  //Railcraft End
 }

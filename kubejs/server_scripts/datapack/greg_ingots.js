@@ -45,7 +45,7 @@ let addGregTechIngotsToTFC = (/** @type {Internal.DataPackEventJS} */ event) => 
       melt_temperature: meltTemp,
       specific_heat_capacity: specificHeatCap,
       ingots: Ingredient.of(ingots).toJson(),
-      sheets: Ingredient.of(sheets).toJson(),
+      sheets: Ingredient.of(sheets).toJson()
     })
     let itemLocation = Utils.id(fluid)
     event.addJson(`${itemLocation.namespace}:tfc/metals/${itemLocation.path}.json`, json)
@@ -58,9 +58,9 @@ let addGregTechIngotsToTFC = (/** @type {Internal.DataPackEventJS} */ event) => 
       ingredient: Ingredient.of(item).toJson(),
       result_fluid: {
         fluid: fluid,
-        amount: amount,
+        amount: amount
       },
-      temperature: meltTemp,
+      temperature: meltTemp
     })
     let itemLocation = Utils.id(item)
     event.addJson(`tfc:recipes/heating/metal/${itemLocation.path}.json`, json)
@@ -71,16 +71,16 @@ let addGregTechIngotsToTFC = (/** @type {Internal.DataPackEventJS} */ event) => 
     let json = JsonIO.toObject({
       type: "tfc:casting",
       mold: {
-        item: "tfc:ceramic/ingot_mold",
+        item: "tfc:ceramic/ingot_mold"
       },
       fluid: {
         ingredient: fluid,
-        amount: amount,
+        amount: amount
       },
       result: {
-        item: item,
+        item: item
       },
-      break_chance: 0.1,
+      break_chance: 0.1
     })
     let itemLocation = Utils.id(item)
     event.addJson(`tfc:recipes/casting/${itemLocation.path}.json`, json)

@@ -41,8 +41,8 @@ const addGregVeinData = (/** @type {Internal.DataPackEventJS} */ event) => {
         random_name: veinName
       }
     })
-    console.log(json + `as gregitas:gregveins/${veinName}.json`)
-    event.addJson(`gregitas:gregveins/${veinName}.json`, json)
+    console.log(json + `as tfc:worldgen/configured_feature/vein/${veinName}.json`)
+    event.addJson(`tfc:worldgen/configured_feature/vein/${veinName}.json`, json)
   }
 
   tfcStone.forEach((stone) => {

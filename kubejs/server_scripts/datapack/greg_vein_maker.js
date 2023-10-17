@@ -41,10 +41,15 @@ const addGregVeinData = (/** @type {Internal.DataPackEventJS} */ event) => {
         random_name: veinName
       }
     })
-    console.log(json + `as tfc:worldgen/configured_feature/vein/${veinName}.json`)
-    event.addJson(`tfc:worldgen/configured_feature/vein/${veinName}.json`, json)
+    console.log(json + `as gregitas:worldgen/configured_feature/vein/${veinName}.json`)
+    event.addJson(`gregitas:worldgen/configured_feature/vein/${veinName}.json`, json)
+    let json2 = JsonIO.toObject({
+      feature: `gregitas:vein/${veinName}`,
+      placement: []
+    })
+    event.addJson(`gregitas:worldgen/placed_feature/vein/${veinName}.json`, json2)
   }
-
+  //Make sure to add anything you add here to `greg_vein_tags.js`
   tfcStone.forEach((stone) => {
     makeTFCDiskVein(
       `tfc:rock/raw/${stone}`,

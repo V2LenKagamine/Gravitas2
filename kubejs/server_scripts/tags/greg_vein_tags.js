@@ -1,8 +1,7 @@
 const addGregVeinsToTags = (/** @type {TagEvent.PlacedFeature}*/ event) => {
-  event.removeAll("tfc:in_biome/veins")
-  event.add("tfc:in_biome/veins", "tfc:vein/testvein")
+  //these are made in `greg_vein_maker.js`
   tfcStone.forEach((stone) => {
-    event.add("tfc:in_biome/veins", `tfc:vein/test_${stone}`)
+    event.add("tfc:in_biome/veins", `gregitas:vein/test_${stone}`)
     console.log(`tfc:vein/test_${stone}` + " to tfc:in_biome/veins")
   })
 }

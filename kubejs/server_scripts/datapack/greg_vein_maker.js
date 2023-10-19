@@ -1,4 +1,10 @@
 const addGregVeinData = (/** @type {Internal.DataPackEventJS} */ event) => {
+  const replacementMap = {
+    gold: "tfc:ore/rich_native_gold/",
+    iron: "tfc:ore/rich_hematite/",
+    copper: "tfc:ore/rich_native_copper/"
+  }
+
   /**
    *
    * @param {Array<Array<>>} blockToWeightMap - [["modid:block",weight],[etc...]]
@@ -29,7 +35,10 @@ const addGregVeinData = (/** @type {Internal.DataPackEventJS} */ event) => {
         tempArray.push(
           JsonIO.toObject({
             weight: subArray[1],
-            block: `gregitas:ore/${subArray[0]}/${stone}`
+            block:
+              replacementMap[subArray[0]] != null
+                ? `${replacementMap[subArray[0]]}${stone}`
+                : `gregitas:ore/${subArray[0]}/${stone}`
           })
         )
       }
@@ -52,7 +61,6 @@ const addGregVeinData = (/** @type {Internal.DataPackEventJS} */ event) => {
         height: veinHeight
       }
     })
-    console.log(json)
     event.addJson(`gregitas:worldgen/configured_feature/vein/${veinName}.json`, json)
     let json2 = JsonIO.toObject({
       feature: `gregitas:vein/${veinName}`,
@@ -63,6 +71,6 @@ const addGregVeinData = (/** @type {Internal.DataPackEventJS} */ event) => {
   //Make sure to add anything you add here to `greg_vein_tags.js`
   //Below is an example of how to add a new vein.
   global.gregVeins.forEach((vein) => {
-    makeTFCDiskVein(vein.oreAndWeight, global.tfcStone, vein.weight, vein.minY, vein.maxY, 15, 0.4, 4, vein.name)
+    makeTFCDiskVein(vein.oreAndWeight, vein.validStones, vein.weight, vein.minY, vein.maxY, 15, 0.4, 4, vein.name)
   })
 }

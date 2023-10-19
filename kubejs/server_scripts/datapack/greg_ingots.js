@@ -98,6 +98,131 @@ let addGregTechIngotsToTFC = (/** @type {Internal.DataPackEventJS} */ event) => 
     addTFCCastingRecipe(ingot.toString(), fluid.toString(), 144)
   })
 
+  let oreToMolten = [
+    {
+      ore: "gtceu:raw_lead",
+      liquid: "gtceu:lead",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_silver",
+      liquid: "tfc:metal/silver",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_tin",
+      liquid: "tfc:metal/tin",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_hematite",
+      liquid: "tfc:metal/cast_iron",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_goethite",
+      liquid: "tfc:metal/cast_iron",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_cassiterite",
+      liquid: "tfc:metal/tin",
+      amount: 144
+    },
+    {
+      ore: "gtceu:raw_cassiterite_sand",
+      liquid: "tfc:metal/tin",
+      amount: 144
+    },
+    {
+      ore: "gtceu:raw_chalcopyrite",
+      liquid: "tfc:metal/copper",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_chalcopyrite",
+      liquid: "tfc:metal/copper",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_galena",
+      liquid: "gtceu:lead",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_garnierite",
+      liquid: "tfc:metal/nickel",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_magnetite",
+      liquid: "tfc:metal/cast_iron",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_pyrite",
+      liquid: "tfc:metal/cast_iron",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_sphalerite",
+      liquid: "tfc:metal/zinc",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_ctetrahedrite",
+      liquid: "tfc:metal/copper",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_chalcopyrite",
+      liquid: "tfc:metal/copper",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_yellow_limonite",
+      liquid: "tfc:metal/cast_iron",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_bornite",
+      liquid: "tfc:metal/copper",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_chalcocite",
+      liquid: "tfc:metal/copper",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_pentlandite",
+      liquid: "tfc:metal/nickel",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_malachite",
+      liquid: "tfc:metal/copper",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_basaltic_mineral_sand",
+      liquid: "tfc:metal/cast_iron",
+      amount: 72
+    },
+    {
+      ore: "gtceu:raw_granitic_mineral_sand",
+      liquid: "tfc:metal/cast_iron",
+      amount: 72
+    }
+  ]
+
+  oreToMolten.forEach((ore) => {
+    let temp = $FluidHelper.getTemperature(Fluid.of(ore.liquid)) - 273 // Kelvin to Celcius
+    temp = Math.max(230, temp)
+    addTFCHeatCapability(ore.ore, 2.857)
+    addTFCHeatingRecipe(ore.ore, ore.liquid, temp, ore.amount)
+  })
+
   addTFCHeatCapability("gtceu:double_invar_ingot", 2.857, 921, 1228)
   addTFCHeatCapability("gtceu:wrought_iron_bolt", 1.429, 921, 1228)
 

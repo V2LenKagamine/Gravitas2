@@ -70,6 +70,26 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     ingredients: [{ item: "tfc:refined_iron_bloom" }],
     results: [{ item: "tfc:metal/ingot/wrought_iron" }]
   })
+  event.custom({
+    type: "create:deploying",
+    ingregients: [
+      {
+        item: "create:shaft"
+      },
+      { tag: "forge:treated_wood" }
+    ],
+    results: [{ item: "create:cogwheel" }]
+  })
+  event.custom({
+    type: "create:deploying",
+    ingregients: [
+      {
+        item: "create:cogwheel"
+      },
+      { tag: "forge:treated_wood" }
+    ],
+    results: [{ item: "create:large_cogwheel" }]
+  })
   //Create End
 
   //GTCEU Start
@@ -132,13 +152,14 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
 
   //Rock and Stone!
   global.tfcStone.forEach((stone) => {
-    event.recipes.gtceu.rock_breaker(`loose_${stone}`)
+    event.recipes.gtceu
+      .rock_breaker(`loose_${stone}`)
       .notConsumable(`tfc:rock/raw/${stone}`)
       .itemOutputs(`tfc:rock/raw/${stone}`)
       .duration(16)
       .EUt(LV)
       ["addData(java.lang.String,java.lang.String)"]("fluidA", "minecraft:lava")
-      ["addData(java.lang.String,java.lang.String)"]("fluidB", "minecraft:water") 
+      ["addData(java.lang.String,java.lang.String)"]("fluidB", "minecraft:water")
       .addCondition(RockBreakerCondition.INSTANCE)
   })
   //Railcraft Start

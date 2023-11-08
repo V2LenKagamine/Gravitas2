@@ -1,24 +1,6 @@
 // priority 10
 
 const chestBanList = [
-  "ad_astra:cheese",
-  "ad_astra:desh_ingot",
-  "ad_astra:desh_nugget",
-  "ad_astra:fuel_bucket",
-  "ad_astra:hammer",
-  "ad_astra:ice_shard",
-  "ad_astra:launch_pad",
-  "ad_astra:mars_sand",
-  "ad_astra:moon_sand",
-  "ad_astra:oxygen_tank",
-  "ad_astra:raw_desh",
-  "ad_astra:raw_ostrum",
-  "ad_astra:sky_stone",
-  "ad_astra:space_boots",
-  "ad_astra:space_helmet",
-  "ad_astra:space_painting",
-  "ad_astra:space_pants",
-  "ad_astra:space_suit",
   "enderio:copper_alloy_ingot",
   "enderio:dark_steel_ingot",
   "enderio:dark_steel_sword",
@@ -71,6 +53,7 @@ const chestBanList = [
   "minecraft:powder_snow_bucket",
   "minecraft:soul_torch",
   "minecraft:enchanting_table",
+  "railcraft:steel_plate"
 ]
 
 const chestReplacementMap = {
@@ -180,6 +163,7 @@ const chestReplacementMap = {
   "minecraft:porkchop": "tfc:food/pork",
   "minecraft:potato": "tfc:food/potato",
   "minecraft:pumpkin": "tfc:pumpkin",
+  "minecraft:pumpkin_seeds": "tfc:seeds/pumpkin",
   "minecraft:rabbit": "tfc:food/rabbit",
   "minecraft:raw_copper": "tfc:ore/rich_native_copper",
   "minecraft:raw_copper_block": "tfc:metal/ingot/copper",
@@ -199,6 +183,7 @@ const chestReplacementMap = {
   "minecraft:stone_sword": "tfc:stone/javelin/igneous_extrusive",
   "minecraft:sugar_cane": "tfc:seeds/sugarcane",
   "minecraft:suspicious_stew": "tfc:food/green_bean",
+  "minecraft:sweet_berries": "tfc:food/strawberry",
   "minecraft:torch": "tfc:torch",
   "minecraft:water_bucket": "tfc:wooden_bucket",
   "minecraft:wheat": "tfc:food/wheat",

@@ -35,5 +35,8 @@ kubejs/jsconfig.json
 kubejs/documentation/
 kubejs/probe/
 .idea
-.curseclient
-minecraftinstance.json
+node_modules/
+package-lock.json
+.eslintrc
+package.json
+node-tail.js

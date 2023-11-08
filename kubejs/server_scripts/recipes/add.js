@@ -12,31 +12,9 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     rules: ["bend_last", "draw_second_last", "draw_third_last"]
   })
 
-  event.custom({
-    type: "tfc:welding",
-    first_input: { item: "gtceu:wrought_iron_rod" },
-    second_input: { item: "gtceu:wrought_iron_rod" },
-    tier: 3,
-    result: { item: "kubejs:cutter_head" }
+  event.shaped("tfc:bloomery", ["BBB", "B B", "BBB"], {
+    B: "#forge:double_sheets/any_bronze"
   })
-
-  event.custom({
-    type: "tfc:welding",
-    first_input: { item: "gtceu:wrought_iron_bolt" },
-    second_input: { item: "gtceu:wrought_iron_bolt" },
-    tier: 3,
-    result: { item: "gtceu:wrought_iron_screw" }
-  })
-
-  event.shaped("gtceu:wrought_iron_wire_cutter", [" F ", "HCD", "RSR"], {
-    F: "#forge:tools/files",
-    H: "#forge:tools/hammers",
-    C: "kubejs:cutter_head",
-    D: "#forge:tools/screwdrivers",
-    R: "gtceu:wrought_iron_rod",
-    S: "gtceu:wrought_iron_screw"
-  })
-
   event.custom({
     type: "tfc:glassworking",
     operations: ["blow", "blow", "roll", "pinch", "saw"],
@@ -54,6 +32,12 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
     Z: "#forge:nuggets/zinc"
   })
 
+  event.shaped("create:millstone", [" M ", " G ", " Q "], {
+    M: "tfc:handstone",
+    G: "create:cogwheel",
+    Q: "tfc:quern"
+  })
+  
   event.custom({
     type: "create:mixing",
     ingredients: [{ tag: "tfc:igneous_extrusive_rock" }, { tag: "forge:nuggets/zinc" }],
@@ -72,7 +56,7 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
   })
   event.custom({
     type: "create:deploying",
-    ingregients: [
+    ingredients: [
       {
         item: "create:shaft"
       },
@@ -82,7 +66,7 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
   })
   event.custom({
     type: "create:deploying",
-    ingregients: [
+    ingredients: [
       {
         item: "create:cogwheel"
       },
@@ -148,6 +132,9 @@ let recipeAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
       .duration(40)
       .EUt(LV)
   })
+
+  event.shaped('gtceu:treated_wood_planks', ['LL', 'LL'], {L: 'gregitas:creosote_treated_lumber'}).id('gregitas:shaped/treated_wood_planks')
+  event.shaped('gtceu:rubber_planks', ['LL', 'LL'], {L: 'gregitas:rubber_lumber'}).id('gregitas:shaped/rubber_planks')
   //GTCEU End
 
   //Rock and Stone!

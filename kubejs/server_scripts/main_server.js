@@ -6,6 +6,7 @@ ServerEvents.recipes((event) => {
   recipeAdd(event)
   replaceTFCHeatingAndCasting(event)
   addCollapse(event)
+  tfcGregTools(event)
 })
 
 LootJS.modifiers((event) => {
@@ -18,7 +19,8 @@ LootJS.modifiers((event) => {
 ServerEvents.tags("worldgen/biome", (event) => {
   addTFCBiomesToVanilla(event)
   addStargateBiomes(event)
-  removeStrongholdFromOW(event)
+  removeBiomesFromStructures(event)
+  addBiomesToStructures(event)
 })
 
 ServerEvents.tags("worldgen/placed_feature", (event) => {
@@ -31,6 +33,10 @@ ServerEvents.tags("item", (event) => {
 
 ServerEvents.tags("block", (event) => {
   addBlockTags(event)
+})
+
+ServerEvents.tags('fluid', (event) => {
+  addFluidTags(event)
 })
 
 ServerEvents.tags("worldgen/configured_feature", (event) => {
@@ -54,4 +60,9 @@ ServerEvents.lowPriorityData((event) => {
 
 NetworkEvents.dataReceived("customTask", (event) => {
   serverObserveGtTask(event) // TODO: needs rework
+})
+
+MoreJSEvents.villagerTrades((event) => {
+  replaceTrades(event)
+
 })

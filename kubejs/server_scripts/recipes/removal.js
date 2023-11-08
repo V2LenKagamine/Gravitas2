@@ -11,6 +11,8 @@ const toolsToRemove = [
   "red_steel"
 ]
 let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
+
+  event.remove({ id: "tfc:crafting/bloomery"})
   //GT
   event.remove({ id: "gtceu:shaped/stick_wrought_iron" })
   event.remove({ id: "gtceu:shaped/stick_long_wrought_iron" })
@@ -19,6 +21,8 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   event.remove({ id: "gtceu:shaped/iron_bucket" })
 
   event.remove({ id: "gtceu:shaped/bronze_primitive_blast_furnace" })
+
+  event.remove({ id: 'gtceu:shapeless/rubber_wood_planks' })
 
   //GT / Railcraft Tool Specific
   toolsToRemove.forEach((tool) => {
@@ -58,9 +62,8 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   //ATO
   event.remove({ id: /^alltheores:.*/, mod: "alltheores" })
 
-  //Ad Astra
-  event.remove({ id: /^ad_astra:hammering.*/, mod: "ad_astra" })
-  event.remove({ id: "ad_astra:recipes/steel_ingot_from_blasting_iron_ingot" })
+  //Apotheosis
+  event.remove({ id: /^apotheosis:salvaging.*_horse_armor/ })
 
   //Apotheosis
   event.remove({ id: /^apotheosis:salvaging.*_horse_armor/ })
@@ -68,6 +71,7 @@ let recipeRemoval = (/** @type {Internal.RecipesEventJS} */ event) => {
   //Create
   event.remove({ id: "create:crafting/materials/andesite_alloy" })
   event.remove({ id: "create:crafting/materials/andesite_alloy_from_zinc" })
+  event.remove({ id: "create:crafting/kinetics/millstone" })
   event.remove({ id: "create:mixing/andesite_alloy" })
   event.remove({ id: "create:mixing/andesite_alloy_from_zinc" })
   event.remove({ id: "create:deploying/cogwheel" })

@@ -5,12 +5,20 @@ const strucBlocksReplacementMap = {
   "minecraft:blast_furnace": "minecraft:air",
   "minecraft:smoker": "minecraft:air",
   "minecraft:fletching_table": "minecraft:air",
+  "minecraft:cartography_table": "minecraft:air",
   "minecraft:cobblestone": "tfc:rock/raw/granite",
   "minecraft:gold_ore": "minecraft:water",
   "minecraft:dirt": "tfc:dirt/loam",
   "minecraft:dirt_path": "tfc:grass_path/loam",
   "minecraft:grass_block": "tfc:grass/loam",
   "minecraft:farmland": "tfc:farmland/loam",
+  "minecraft:andesite": "tfc:rock/hardened/andesite",
+  "minecraft:mud": "tfc:mud/loam",
+  "minecraft:mud_bricks": "tfc:mud_bricks/loam",
+  "minecraft:mud_brick_wall": "tfc:mud_bricks/loam",
+  "minecraft:rooted_dirt": "tfc:rooted_dirt/loam",
+  "minecraft:mangrove_roots": "tfc:rooted_dirt/loam",
+  "minecraft:muddy_mangrove_roots": "tfc:muddy_roots/loam",
   "minecraft:stone_bricks": "tfc:rock/smooth/granite",
   "minecraft:red_sandstone": "tfc:raw_sandstone/red",
   "minecraft:chiseled_red_sandstone": "tfc:chiseled_sandstone/red",
@@ -25,7 +33,8 @@ const strucBlocksReplacementMap = {
   "minecraft:attached_melon_stem": "tfc:crop/melon",
   "minecraft:stone": "tfc:rock/hardened/granite",
   "minecraft:deepslate": "tfc:rock/hardened/basalt",
-  "minecraft:cobbled_deepslate": "tfc:rock/hardened/basalt"
+  "minecraft:cobbled_deepslate": "tfc:rock/hardened/basalt",
+  "minecraft:infested_chiseled_stone_bricks": "tfc:rock/chiseled/granite",
 }
 
 const strucBlocksWithPropertiesMap = {
@@ -39,6 +48,7 @@ const strucBlocksWithPropertiesMap = {
   "minecraft:cobblestone_slab": "tfc:rock/cobble/granite_slab",
   "minecraft:stone_stairs": "tfc:rock/raw/granite_stairs",
   "minecraft:stone_brick_stairs": "tfc:rock/bricks/granite_stairs",
+  "minecraft:stone_brick_wall": "tfc:rock/bricks/granite_wall",
   "minecraft:cut_red_sandstone_slab": "tfc:cut_sandstone/red_slab",
   "minecraft:cobblestone_wall": "tfc:rock/bricks/granite_wall",
   "minecraft:chiseled_stone_bricks": "tfc:rock/chiseled/granite",
@@ -70,6 +80,10 @@ const strucBlocksWithPropertiesMap = {
   "minecraft:stone_slab": "tfc:rock/raw/granite_slab",
   "minecraft:smooth_stone_slab": "tfc:rock/smooth/granite_slab",
   "minecraft:polished_andesite": 'tfc:rock/smooth/andesite',
+  "minecraft:bookshelf": "tfc:wood/planks/spruce_bookshelf",
+  "minecraft:iron_bars": "tfc:metal/bars/copper",
+  "minecraft:barrel": "tfc:wood/barrel/spruce",
+  "minecraft:campfire": "tfc:firepit",
 }
 
 function getState(block, state) {
@@ -98,6 +112,7 @@ const regexArray = [
   [new RegExp(/^stripped_(\w+?)_wood$/), "tfc:wood/stripped_wood/$1"],
   [new RegExp(/^(\w+?)_leaves$/), "tfc:wood/leaves/$1"],
   [new RegExp(/^(\w+?)_wood$/), "tfc:wood/wood/$1"],
+  [new RegExp(/^(\w+?)_sapling$/), "tfc:wood/sapling/$1"],
   [new RegExp(/^(\w+?)_planks$/), "tfc:wood/planks/$1"],
   [new RegExp(/^(\w+?)_stairs$/), "tfc:wood/planks/$1_stairs"],
   [new RegExp(/^(\w+?)_slab$/), "tfc:wood/planks/$1_slab"],
@@ -130,8 +145,8 @@ const replaceVanillaBlocks = (/** @type {Internal.StructureLoadEventJS} */ event
     event.id.startsWith("repurposed_structures") ||
     event.id.startsWith("apotheosis") ||
     event.id.startsWith("waystones") ||
-    event.id.startsWith("ae2") ||
-    event.id.startsWith("ad_astra")
+    event.id.startsWith("ae2")/* ||
+    event.id.startsWith("ad_astra")*/
   ) {
     event.forEachPalettes((palette) => {
       palette.forEach((struc) => {

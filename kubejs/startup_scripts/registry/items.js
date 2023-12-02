@@ -5,6 +5,12 @@ let registerItems = (/** @type {Registry.Item} */ event) => {
     event.create('gregitas:creosote_treated_lumber').texture('kubejs:item/lumber').color(0x502800)
     event.create('gregitas:rubber_lumber').texture('kubejs:item/lumber').color(0x615232)
 
+    event.create('gregitas:certus_boule').texture('kubejs:item/certus_boule')
+    event.create('gregitas:certus_wafer').texture('kubejs:item/certus_wafer')
+    event.create('gregitas:engineering_wafer').texture('kubejs:item/engineering_wafer')
+    event.create('gregitas:calculation_wafer').texture('kubejs:item/calculation_wafer')
+    event.create('gregitas:logic_wafer').texture('kubejs:item/logic_wafer')
+
   //Tools
     event.create('gregitas:small_tool_handle').texture('kubejs:item/tools/handle').unstackable()
     event.create('gregitas:stone_bowl').texture('kubejs:item/tools/stone_bowl').unstackable()
@@ -31,6 +37,7 @@ let registerItems = (/** @type {Registry.Item} */ event) => {
       event.create(`gregitas:${metal.id}_scythe_head`).texture('kubejs:item/tools/scythe').color(0, metal.color).unstackable()
       event.create(`gregitas:${metal.id}_shovel_head`).texture('kubejs:item/tools/shovel').color(0, metal.color).unstackable()
       event.create(`gregitas:${metal.id}_sword_blade`).texture('kubejs:item/tools/sword').color(0, metal.color).unstackable()
+      event.create(`gregitas:${metal.id}_butchery_blade`).texture('kubejs:item/tools/butchery_blade').color(0, metal.color).unstackable()
   })
 
   gtMortars.forEach((metal) => {
@@ -43,6 +50,6 @@ let registerItems = (/** @type {Registry.Item} */ event) => {
     event.create(`gregitas:${metal.id}_cutter_blade`).texture('layer0', 'kubejs:item/tools/cutter_handle').texture('layer1', 'kubejs:item/tools/cutter_blade').color(1, metal.color).unstackable()
     event.create(`gregitas:${metal.id}_wrench_base`).texture('kubejs:item/tools/wrench_base').color(0, metal.color).unstackable()
     event.create(`gregitas:${metal.id}_wrench_claw`).texture('kubejs:item/tools/wrench_claw').color(0, metal.color).unstackable()
-    
+    event.create(`gregitas:${metal.id}_butchery_blade`).texture('kubejs:item/tools/butchery_blade').color(0, metal.color).unstackable()
   })
 }

@@ -6,11 +6,12 @@ ServerEvents.recipes((event) => {
   recipeAdd(event)
   replaceTFCHeatingAndCasting(event)
   addCollapse(event)
-  //tfcGregTools(event)
+  tfcGregTools(event)
   gtceuAdd(event)
   createAdd(event)
-  //spaceDustChain(event)
-  //certusSemiconductors(event)
+  spaceDustChain(event)
+  certusSemiconductors(event)
+  gregifyAE2(event)
 })
 
 LootJS.modifiers((event) => {
@@ -34,7 +35,9 @@ ServerEvents.tags("worldgen/placed_feature", (event) => {
 ServerEvents.tags("item", (event) => {
   addItemTags(event)
 })
-
+ServerEvents.tags("entity", (event) => {
+  entityTags(event)
+})
 ServerEvents.tags("block", (event) => {
   addBlockTags(event)
 })
@@ -54,12 +57,14 @@ MoreJSEvents.structureLoad((event) => {
 MoreJSEvents.structureAfterPlace((event) => {
   replaceGoldBlocksWithPiles(event)
   runErosionFeature(event)
+  replaceVillagesWoodAccordingToClimate(event)
 })
 
 ServerEvents.lowPriorityData((event) => {
   addGregTechIngotsToTFC(event)
   overrideTFCArmourFinalWeld(event)
   addGregVeinData(event)
+  addGenericData(event)
 })
 
 NetworkEvents.dataReceived("customTask", (event) => {
@@ -68,6 +73,12 @@ NetworkEvents.dataReceived("customTask", (event) => {
 
 MoreJSEvents.villagerTrades((event) => {
   replaceTrades(event)
-
 })
 
+EntityEvents.spawned("item", event => {
+  replaceSpawnedItem(event)
+})
+
+EntityEvents.death("player", (event) => {
+  addsTimeOfDeathToPlayer(event)
+})

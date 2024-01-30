@@ -173,7 +173,7 @@ const gregVeins = [
     ]
   },
   {
-    name: "diamond",
+    name: "lapis_lazuli",
     weight: 40,
     minY: -65,
     maxY: -30,
@@ -184,6 +184,18 @@ const gregVeins = [
       ["lapis", 2],
       ["calcite", 1]
     ]
+  },
+  {
+      name: "diamond",
+      weight: 40,
+      minY: -65,
+      maxY: 10,
+      validStones: ["gabbro"],
+      oreAndWeight: [
+        ["graphite", 3],
+        ["diamond", 2],
+        ["coal", 1]
+      ]
   },
   {
     name: "manganese",
@@ -259,7 +271,7 @@ const gregVeins = [
     oreAndWeight: [
       ["thorium", 2],
       ["cinnabar", 1],
-      ["chromite", 1]
+      ["uraninite", 1]
     ]
   },
   {
@@ -270,7 +282,7 @@ const gregVeins = [
     validStones: ["granite", "diorite", "gabbro", "schist", "phyllite"],
     oreAndWeight: [
       ["chromite", 2],
-      ["thorium", 1]
+      ["nickel", 1]
     ]
   }
 ]
@@ -313,7 +325,7 @@ const addGregVeinData = (/** @type {Internal.DataPackEventJS} */ event) => {
             block:
               replacementMap[subArray[0]] != null
                 ? `${replacementMap[subArray[0]]}${stone}`
-                : `gtceu:tfc_${stone}_${subArray[0]}_ore`
+                : `gtceu:${stone}_${subArray[0]}_ore`
           })
         )
       }

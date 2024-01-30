@@ -234,15 +234,51 @@ let gtceuAdd = (/** @type {Internal.RecipesEventJS} */ event) => {
 
     // Machine Recipes
     GTValues.VN.forEach((tier_name, index, arr) => {
-    if (index >= 14) { return; }
+        if (index >= 14) { return; }
+        let glass = $CraftingComponent.GLASS.getIngredient(index)
+        if (glass instanceof $TagKey) {
+            glass = '#' + glass.location().toString()
+        }
         if (index >= 1) {
-           event.shaped(`gtceu:${tier_name.toLowerCase()}_chemical_vapor_depositor`, ["SCS", "GHG", "PCP"], {S: "gtceu:stainless_steel_small_fluid_pipe", C: `#forge:circuits/${tier_name.toLowerCase()}`, G: $CraftingComponent.GLASS.getIngredient(index), H: `gtceu:${tier_name.toLowerCase()}_hull`, P: `gtceu:${tier_name.toLowerCase()}_emitter`}).id(`gregitas:shaped/${tier_name.toLowerCase()}_gas_centrifuge`)
+           event.shaped(`gtceu:${tier_name.toLowerCase()}_chemical_vapor_depositor`, ["SCS", "GHG", "PCP"], {S: "gtceu:stainless_steel_small_fluid_pipe", C: `#forge:circuits/${tier_name.toLowerCase()}`, G: glass, H: `gtceu:${tier_name.toLowerCase()}_machine_hull`, P: `gtceu:${tier_name.toLowerCase()}_emitter`}).id(`gregitas:shaped/${tier_name.toLowerCase()}_chemical_vapor_depositor`)
         }
         if (index >= 4) {
-           event.shaped(`gtceu:${tier_name.toLowerCase()}_gas_centrifuge`, ["SCS", "PHP", "FCF"], {S: "gtceu:steel_normal_fluid_pipe", C: `#forge:circuits/${tier_name.toLowerCase()}`, P: `gtceu:${tier_name.toLowerCase()}_pump`, H: `gtceu:${tier_name.toLowerCase()}_hull`, F: "gtceu:fluid_filter"}).id(`gregitas:shaped/${tier_name.toLowerCase()}_gas_centrifuge`)
+           event.shaped(`gtceu:${tier_name.toLowerCase()}_gas_centrifuge`, ["SCS", "PHP", "FCF"], {S: "gtceu:steel_normal_fluid_pipe", C: `#forge:circuits/${tier_name.toLowerCase()}`, P: `gtceu:${tier_name.toLowerCase()}_pump`, H: `gtceu:${tier_name.toLowerCase()}_machine_hull`, F: "gtceu:fluid_filter"}).id(`gregitas:shaped/${tier_name.toLowerCase()}_gas_centrifuge`)
         }
         if (index >= 7) {
-           event.shaped(`gtceu:${tier_name.toLowerCase()}_plasma_centrifuge`, ["SCS", "PHP", "FCF"], {S: "gtceu:tungsten_large_fluid_pipe", C: `#forge:circuits/${tier_name.toLowerCase()}`, P: `gtceu:${tier_name.toLowerCase()}_pump`, H: `gtceu:${tier_name.toLowerCase()}_hull`, F: $CraftingComponent.VOLTAGE_COIL.getIngredient(index)})
+           event.shaped(`gtceu:${tier_name.toLowerCase()}_plasma_centrifuge`, ["SCS", "PHP", "FCF"], {S: "gtceu:tungsten_large_fluid_pipe", C: `#forge:circuits/${tier_name.toLowerCase()}`, P: `gtceu:${tier_name.toLowerCase()}_pump`, H: `gtceu:${tier_name.toLowerCase()}_machine_hull`, F: $CraftingComponent.VOLTAGE_COIL.getIngredient(index)})
         }
     })
+
+    //Modification
+    event.replaceInput({ mod: 'gtceu', }, 'minecraft:sand', '#forge:sand')
+    event.replaceInput({ mod: 'gtceu', },'minecraft:red_sand', '#forge:sand')
+    event.replaceOutput({ mod: 'gtceu' }, 'minecraft:sand', 'tfc:sand/yellow')  
+    event.replaceInput({ mod: 'gtceu' }, 'minecraft:dirt', '#minecraft:dirt')
+    event.replaceOutput({ mod: 'gtceu' }, 'minecraft:dirt', 'tfc:dirt/loam')
+    event.remove({ id: 'gtceu:compressor/red_sandstone' })
+
+    enderTC.forEach((ender) => {
+        event.recipes.gtceu.chemical_bath(`ender_chest_${ender.id}`)
+            .itemInputs('enderchests:ender_chest')
+            .inputFluids(Fluid.of(`gtceu:${ender.id}_dye`, 216))
+            .itemOutputs(Item.of('enderchests:ender_chest', `{code:"${ender.colour}",owner:"all"}`))
+            .duration(500)
+            .EUt(LV)
+
+        event.recipes.gtceu.chemical_bath(`ender_tank_${ender.id}`)
+            .itemInputs('endertanks:ender_tank')
+            .inputFluids(Fluid.of(`gtceu:${ender.id}_dye`, 216))
+            .itemOutputs(Item.of('endertanks:ender_tank', `{code:"${ender.colour}",owner:"all"}`))
+            .duration(500)
+            .EUt(LV)
+    })
+
+    event.recipes.kubejs.shaped('gtceu:wood_drum', [ 'mRs', 'PWP', 'PWP' ], { m: '#forge:tools/mallets', R: 'gtceu:sticky_resin', s: '#forge:tools/saws', P: '#minecraft:planks', W: 'gtceu:wrought_iron_long_rod'}).damageIngredient(['#forge:tools'])
+
+    event.recipes.kubejs.shaped('gtceu:lv_electric_motor', ['cwr', 'wmw', 'rwc'], { c: 'gtceu:tin_single_cable', w: 'gtceu:copper_single_wire', r: 'gtceu:wrought_iron_rod', m: 'gtceu:magnetic_wrought_iron_rod' })
+
+    event.recipes.kubejs.shaped('2x gtceu:pump_deck', ['   ', 'SPS', 'sCh'], { S: 'gtceu:wrought_iron_screw', P: 'gtceu:treated_wood_planks', C: '#forge:slabs/cobblestone', s: '#forge:tools/screwdrivers', h: '#forge:tools/hammers' }).damageIngredient(['#forge:tools'])
+    event.recipes.kubejs.shaped('gtceu:pump_hatch', ['SRs', 'PLP', 'CRC'], { S: 'gtceu:wrought_iron_screw', P: 'gtceu:treated_wood_planks', C: '#forge:slabs/cobblestone', R: 'gtceu:wrought_iron_ring', L: 'gtceu:wood_large_fluid_pipe', s: '#forge:tools/screwdrivers' }).damageIngredient(['#forge:tools'])
+    event.recipes.kubejs.shaped('gtceu:primitive_pump', ['RNS', 'BPs', 'CLC'], { S: 'gtceu:wrought_iron_screw', P: 'gtceu:treated_wood_planks', C: '#forge:slabs/cobblestone', R: 'gtceu:wrought_iron_ring', L: 'gtceu:wood_large_fluid_pipe', N: 'gtceu:wood_normal_fluid_pipe', B: 'gtceu:wrought_iron_rotor', s: '#forge:tools/screwdrivers' }).damageIngredient(['#forge:tools'])
 }

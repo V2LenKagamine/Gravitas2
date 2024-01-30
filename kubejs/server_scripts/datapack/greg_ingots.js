@@ -191,7 +191,8 @@ let addGregTechIngotsToTFC = (/** @type {Internal.DataPackEventJS} */ event) => 
     "tfc:metal/tin": 230,
     "tfc:metal/cast_iron": 1535,
     "tfc:metal/zinc": 420,
-    "tfc:metal/nickel": 1453
+    "tfc:metal/nickel": 1453,
+    "firmalife:metal/chromium": 1250
   }
 
   let oreToMolten = [
@@ -333,8 +334,11 @@ let addGregTechIngotsToTFC = (/** @type {Internal.DataPackEventJS} */ event) => 
     addTFCHeatingRecipe(ore.ore, ore.liquid, temp, ore.amount)
   })
 
-  addTFCHeatCapability("gtceu:double_invar_ingot", 2.857, 921, 1228)
+  addTFCHeatCapability("gregitas:double_invar_ingot", 2.857, 921, 1228)
   addTFCHeatCapability("gtceu:wrought_iron_bolt", 1.429, 921, 1228)
 
-  addTFCSize("gtceu:double_invar_ingot", "large", "heavy")
+  addTFCSize("gregitas:double_invar_ingot", "large", "heavy")
+  
+  addTFCSize("gtceu:long_distance_fluid_pipeline", "large", "very_light")
+  addTFCSize("gtceu:long_distance_item_pipeline", "large", "very_light")
 }

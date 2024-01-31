@@ -82,3 +82,15 @@ EntityEvents.spawned("item", event => {
 EntityEvents.death("player", (event) => {
   addsTimeOfDeathToPlayer(event)
 })
+
+FTBQuestsEvents.customReward(event => {
+  if (event.reward.tags.isEmpty()) return
+  let tag = event.reward.tags.iterator().next()
+  if (tag.startsWith("biome:")) {
+    handleBiomeMapShop(event, tag)
+  }
+})
+
+ItemEvents.dropped("immersiveengineering:toolbox", event => {
+  event.player.closeMenu()
+})
